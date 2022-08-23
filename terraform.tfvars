@@ -7,4 +7,6 @@ cidr_private1  = "192.168.3.0/24"
 cidr_private2 = "192.168.4.0/24"
 cidr_private3 = "192.168.5.0/24"
 
-elasticsearch_ami_id  = "ami-09224b4e1182e6689"  
+elasticsearch_ami_id  = "ami-0b54d5677fac8b4a3"  
+logstash_ami_id = "ami-01fbb34706c76985b"
+kibana_ami_id = "ami-00012f302e85d003a"

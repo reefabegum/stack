@@ -11,9 +11,9 @@ source "amazon-ebs" "Elasticsearch" {
   ami_name          = "Elasticsearch"
   instance_type     = "t2.small"
   region            = "ap-southeast-2"
-  vpc_id            = "vpc-0fe569efaeea114cb"
-  subnet_id         = "subnet-02abcc3e231a4ca13"
-  security_group_id = "sg-069dbe80ddb1c2e56"
+  vpc_id            = "vpc-07a5008b31f4d4987"
+  subnet_id         = "subnet-00220f35a51da2f2e"
+  security_group_id = "sg-0541ef6427c1b38ce"
 
     source_ami_filter {
     filters = {
@@ -41,82 +41,82 @@ build {
 
 
     provisioner "ansible" {
-      playbook_file = "./playbooks/elasticsearch.yml/"
+      playbook_file = "./playbook/elasticsearch.yml"
     }
 }
-// source "amazon-ebs" "logstach" {
-//   ami_name          = "logstach"
-//   instance_type     = "t2.small"
-//   region            = "ap-southeast-2"
-//   vpc_id            = "vpc-0e10c8b1a8c364721"
-//   subnet_id         = "subnet-0fd3a69d65a8fc39a"
-//   security_group_id = "sg-03d103958605ddbb0"
+source "amazon-ebs" "logstash" {
+  ami_name          = "logstash"
+  instance_type     = "t2.small"
+  region            = "ap-southeast-2"
+  vpc_id            = "vpc-07a5008b31f4d4987"
+  subnet_id         = "subnet-00220f35a51da2f2e"
+  security_group_id = "sg-0541ef6427c1b38ce"
 
 
-//   source_ami_filter {
-//     filters = {
-//       name = "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"
+  source_ami_filter {
+    filters = {
+      name = "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"
 
-//       root-device-type    = "ebs"
-//       virtualization-type = "hvm"
-//     }
-//     most_recent = true
-//     owners      = ["099720109477"]
-//   }
-//   ssh_username = "ubuntu"
-//   tags = {
-//       "Name" = "logstach-Server"
-//     }
-// }
+      root-device-type    = "ebs"
+      virtualization-type = "hvm"
+    }
+    most_recent = true
+    owners      = ["099720109477"]
+  }
+  ssh_username = "ubuntu"
+  tags = {
+      "Name" = "logstash-Server"
+    }
+}
 
-// build {
-//   name = "logstach-packer"
+build {
+  name = "logstash-packer"
 
-//   sources = [
-//     "source.amazon-ebs.logstach"
-//   ]
-
-
-//     // provisioner "ansible" {
-//     //   playbook_file = "./playbooks/apache2.yml"
-//     // }
-// }
+  sources = [
+    "source.amazon-ebs.logstash"
+  ]
 
 
-// source "amazon-ebs" "kibana" {
-//   ami_name          = "kibana"
-//   instance_type     = "t2.small"
-//   region            = "ap-southeast-2"
-//   vpc_id            = "vpc-0e10c8b1a8c364721"
-//   subnet_id         = "subnet-0fd3a69d65a8fc39a"
-//   security_group_id = "sg-03d103958605ddbb0"
-
-//     source_ami_filter {
-//     filters = {
-//       name = "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"
-
-//       root-device-type    = "ebs"
-//       virtualization-type = "hvm"
-//     }
-//     most_recent = true
-//     owners      = ["099720109477"]
-//   }
-//   ssh_username = "ubuntu"
-//   tags = {
-//       "Name" = "kibana-Server"
-//     }
-//      deprecate_at = timeadd(timestamp(), "8766h")
-// }
-
-// build {
-//   name = "kibana-packer"
-
-//   sources = [
-//     "source.amazon-ebs.kibana"
-//   ]
+    provisioner "ansible" {
+      playbook_file = "./playbook/logstash.yml"
+    }
+}
 
 
-//     // provisioner "ansible" {
-//     //   playbook_file = "./playbooks/apache2.yml"
-//     // }
-// }
+source "amazon-ebs" "kibana" {
+  ami_name          = "kibana"
+  instance_type     = "t2.small"
+  region            = "ap-southeast-2"
+  vpc_id            = "vpc-07a5008b31f4d4987"
+  subnet_id         = "subnet-00220f35a51da2f2e"
+  security_group_id = "sg-0541ef6427c1b38ce"
+
+    source_ami_filter {
+    filters = {
+      name = "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"
+
+      root-device-type    = "ebs"
+      virtualization-type = "hvm"
+    }
+    most_recent = true
+    owners      = ["099720109477"]
+  }
+  ssh_username = "ubuntu"
+  tags = {
+      "Name" = "kibana-Server"
+    }
+     deprecate_at = timeadd(timestamp(), "8766h")
+}
+
+build {
+  name = "kibana-packer"
+
+  sources = [
+    "source.amazon-ebs.kibana"
+  ]
+
+
+    provisioner "ansible" {
+      playbook_file = "./playbook/kibana.yml"
+    }
+}

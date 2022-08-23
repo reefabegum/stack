@@ -1,5 +1,5 @@
-resource "aws_instance" "Elastic_server" {
-ami = var.elasticsearch_ami_id
+resource "aws_instance" "Logstash_server" {
+ami = var.logstash_ami_id
   instance_type = "t3.medium"
 
   vpc_security_group_ids = [aws_security_group.elk_server.id]
@@ -11,11 +11,6 @@ ami = var.elasticsearch_ami_id
   
   
   tags = {
-    Name = "ElasticSearch"
+    Name = "Logstash"
   }
 }
- 
-  # resource "aws_eip" "logstash_eip" {
-  #   instance = aws_instance.Logstash_server.id 
-  #   vpc      = true
-  # }
