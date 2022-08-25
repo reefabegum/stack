@@ -13,4 +13,4 @@ ami = var.logstash_ami_id
   tags = {
     Name = "Logstash"
   }
-}
+} 

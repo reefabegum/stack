@@ -11,9 +11,9 @@ source "amazon-ebs" "Elasticsearch" {
   ami_name          = "Elasticsearch"
   instance_type     = "t2.small"
   region            = "ap-southeast-2"
-  vpc_id            = "vpc-07a5008b31f4d4987"
-  subnet_id         = "subnet-00220f35a51da2f2e"
-  security_group_id = "sg-0541ef6427c1b38ce"
+  vpc_id            = "vpc-01320b995f548ec34"
+  subnet_id         = "subnet-09048fd54e8b11cfd"
+  security_group_id = "sg-017d2dc744b707e02"
 
     source_ami_filter {
     filters = {
@@ -48,9 +48,9 @@ source "amazon-ebs" "logstash" {
   ami_name          = "logstash"
   instance_type     = "t2.small"
   region            = "ap-southeast-2"
-  vpc_id            = "vpc-07a5008b31f4d4987"
-  subnet_id         = "subnet-00220f35a51da2f2e"
-  security_group_id = "sg-0541ef6427c1b38ce"
+  vpc_id            = "vpc-01320b995f548ec34"
+  subnet_id         = "subnet-09048fd54e8b11cfd"
+  security_group_id = "sg-017d2dc744b707e02"
 
 
   source_ami_filter {
@@ -87,9 +87,9 @@ source "amazon-ebs" "kibana" {
   ami_name          = "kibana"
   instance_type     = "t2.small"
   region            = "ap-southeast-2"
-  vpc_id            = "vpc-07a5008b31f4d4987"
-  subnet_id         = "subnet-00220f35a51da2f2e"
-  security_group_id = "sg-0541ef6427c1b38ce"
+  vpc_id            = "vpc-01320b995f548ec34"
+  subnet_id         = "subnet-09048fd54e8b11cfd"
+  security_group_id = "sg-017d2dc744b707e02"
 
     source_ami_filter {
     filters = {
