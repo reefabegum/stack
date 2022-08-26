@@ -8,7 +8,7 @@ resource "aws_security_group" "elk_server" {
     from_port        = 80
     to_port          = 80
     protocol         = "tcp"
-    cidr_blocks      = ["157.50.7.149/32"]
+    cidr_blocks      = ["0.0.0.0/0"]
   }
 
   ingress {
@@ -16,7 +16,7 @@ resource "aws_security_group" "elk_server" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["157.50.7.149/32"]
+    cidr_blocks      = ["0.0.0.0/0"]
   }
  
   #elasticsearch
@@ -25,7 +25,7 @@ resource "aws_security_group" "elk_server" {
     from_port        = 9200
     to_port          = 9200
     protocol         = "tcp"
-    cidr_blocks      = ["157.50.7.149/32"]
+    cidr_blocks      = ["0.0.0.0/0"]
   }
   #logstash
   ingress {
@@ -33,21 +33,21 @@ resource "aws_security_group" "elk_server" {
     from_port        = 5043
     to_port          = 5043
     protocol         = "tcp"
-    cidr_blocks      = ["157.50.7.149/32"]
+    cidr_blocks      = ["0.0.0.0/0"]
   }
    ingress {
     description      = "Allow port 5601"
     from_port        = 5601
     to_port          = 5601
     protocol         = "tcp"
-    cidr_blocks      = ["157.50.7.149/32"]
+    cidr_blocks      = ["0.0.0.0/0"]
   }
 
   egress {
     from_port        = 0
     to_port          = 0
     protocol         = "-1"
-    cidr_blocks      = ["157.50.7.149/32"]
+    cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
-}
+} 

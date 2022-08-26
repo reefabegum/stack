@@ -13,8 +13,8 @@
     - name: Install Java Runtime Environment 
       become: yes
       apt:
-       name: default-jre
-       state: present
+        name: default-jre
+        state: present
 
     - name: Download Logstash Deb Package
       get_url:
@@ -29,25 +29,24 @@
     - name: Create Logstash Pipeline File
       become: yes
       file:
-         path: /etc/logstash/conf.d/main.conf
-         state: touch
+          path: /etc/logstash/conf.d/main.conf
+          state: touch
 
     - name: Add Logstash Pipeline Configuration
       become: yes
       blockinfile:
-         path: /etc/logstash/conf.d/main.conf
-         marker: ""
-         block: |
-           input {
-             file {
+          path: /etc/logstash/conf.d/main.conf
+          marker: ""
+          block: |
+            input {
+              file {
               path => "//pri_ip_filebeat/e$/*.log"
-             start_position => "beginning"
-             }
-           }
-           output {
-             elasticsearch { hosts => ["pri_ip_es:9200"]
-             }
-           }
+              start_position => "beginning"
+              }
+            output {
+              elasticsearch { hosts => ["pri_ip_es:9200"]
+              }
+            }
     
     - name: Start Logstash Service
       become: yes
