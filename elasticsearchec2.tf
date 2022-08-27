@@ -5,7 +5,8 @@ ami = var.elasticsearch_ami_id
   vpc_security_group_ids = [aws_security_group.elk_server.id]
   key_name = "elk_key"
   subnet_id = aws_subnet.private.id
-  iam_instance_profile = aws_iam_instance_profile.ssm_profile.name
+  # iam_instance_profile = aws_iam_instance_profile.ssm_profile.name
+  # aws_instance_profile = aws_iam_instance_profile.ssm_profile.id
 
   
   
@@ -14,8 +15,3 @@ ami = var.elasticsearch_ami_id
     Name = "ElasticSearch"
   }
 }
- 
-  # resource "aws_eip" "logstash_eip" {
-  #   instance = aws_instance.Logstash_server.id 
-  #   vpc      = true
-  # }

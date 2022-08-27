@@ -5,10 +5,10 @@ ami = var.logstash_ami_id
   vpc_security_group_ids = [aws_security_group.elk_server.id]
   key_name = "elk_key"
   subnet_id = aws_subnet.private.id
-  iam_instance_profile = aws_iam_instance_profile.ssm_profile.name
-
-  
-  
+  # iam_instance_profile = aws_iam_instance_profile.ssm_profile.name
+  # iam_instance_profile = aws_iam_instance_profile.ssm_profile.id
+  # iam_instance_profile = aws_iam_instance_profile.ssm_profile.id
+ 
   
   tags = {
     Name = "Logstash"
