@@ -2,7 +2,7 @@ resource "aws_instance" "bastion_host" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
 
-  vpc_security_group_ids = [aws_security_group.elk_server.id]
+  vpc_security_group_ids = [aws_security_group.Bastionsg_server.id]
 
   key_name = "elk_key"
   subnet_id = aws_subnet.public.id
