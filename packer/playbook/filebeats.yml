@@ -9,11 +9,11 @@
       apt:
         update_cache=yes
   
-    - name: Installing Java Runtime Environment 
-      become: yes
-      apt:
-      name: default-jre
-      state: present
+    # - name: Installing Java Runtime Environment 
+    #   become: yes
+    #   apt:
+    #   name: default-jre
+    #   state: present
 
     - name: Downloading Filebeat Package
       get_url:
