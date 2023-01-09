@@ -6,7 +6,7 @@ ami = var.logstash_ami_id
   key_name = "elk_key"
   subnet_id = aws_subnet.private.id
 
- 
+
   
   tags = {
     Name = "Logstash"

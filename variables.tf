@@ -36,17 +36,21 @@ variable "cidr_private3" {
   description = "The VPC Private3 cidr."
 
 }
+
 variable "elasticsearch_ami_id" {
     description = "This is my ami id for ElasticSearch"
     type        = string
 }
 
-
 variable "logstash_ami_id" {
     description = "This is my ami id for Logstash"
-    type        = string
-}
+      type        = string
+  }
 variable "kibana_ami_id" {
     description = "This is my ami id for Kibana"
+    type        = string
+}
+variable "filebeats_ami_id" {
+    description = "This is my ami id for filebeats"
     type        = string
 }

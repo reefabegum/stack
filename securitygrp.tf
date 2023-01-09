@@ -8,7 +8,7 @@ resource "aws_security_group" "elasticsg_server" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["192.168.1.103/32"] #private ip of bstion host
+    cidr_blocks      = ["0.0.0.0/0"] #private ip of bstion host
 
   }
   ingress {
@@ -16,7 +16,7 @@ resource "aws_security_group" "elasticsg_server" {
     from_port        = 9200
     to_port          = 9200
     protocol         = "tcp"
-    cidr_blocks      = ["192.168.1.103/32"] #private ip of bstion host
+    cidr_blocks      = ["0.0.0.0/0"] #private ip of bstion host
   }
   egress {
     from_port        = 0
@@ -36,7 +36,7 @@ resource "aws_security_group" "logstashsg_server" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["192.168.1.103/32"] #private ip of bstion host
+    cidr_blocks      = ["0.0.0.0/0"] #private ip of bstion host
 
   }
   ingress {
@@ -44,14 +44,14 @@ resource "aws_security_group" "logstashsg_server" {
     from_port        = 5043
     to_port          = 5044
     protocol         = "tcp"
-    cidr_blocks      = ["192.168.1.103/32"] #private ip of bstion host
+    cidr_blocks      = ["0.0.0.0/0"] #private ip of bstion host
   }
   ingress {
     description      = "Allow port 5066"
     from_port        = 5066
     to_port          = 5066
     protocol         = "tcp"
-    cidr_blocks      = ["192.168.1.103/32"]
+    cidr_blocks      = ["0.0.0.0/0"]
   }
     egress {
     from_port        = 0
@@ -71,7 +71,7 @@ resource "aws_security_group" "kibanasg_server" {
     from_port        = 80
     to_port          = 80
     protocol         = "tcp"
-    cidr_blocks      = ["157.50.4.192/32"]
+    cidr_blocks      = ["0.0.0.0/0"]
   }
 
   ingress {
@@ -79,7 +79,7 @@ resource "aws_security_group" "kibanasg_server" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["157.50.4.192/32"]
+    cidr_blocks      = ["0.0.0.0/0"]
 
   }
   ingress {
@@ -87,7 +87,7 @@ resource "aws_security_group" "kibanasg_server" {
     from_port        = 5601
     to_port          = 5601
     protocol         = "tcp"
-    cidr_blocks      = ["157.50.4.192/32"]
+    cidr_blocks      = ["0.0.0.0/0"]
   }
 
   egress {
@@ -108,14 +108,14 @@ resource "aws_security_group" "Bastionsg_server" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["157.50.4.192/32"]
+    cidr_blocks      = ["0.0.0.0/0"]
   }
       ingress {
     description      = "Allow port 80"
     from_port        = 80
     to_port          = 80
     protocol         = "tcp"
-    cidr_blocks      = ["157.50.4.192/32"]
+    cidr_blocks      = ["0.0.0.0/0"]
   }
 
 

@@ -1,0 +1,48 @@
+### FOR ALL ELK STACK SERVERS ###
+---
+- name: Pre_tasks on Elkservers
+  hosts: default
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: Install java
+      apt:
+        name: default-jre
+        state: present
+    - name: add elasticsearch apt key
+      apt_key:
+        url: "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
+        keyring: /usr/share/keyrings/elasticsearch-keyring.gpg
+        state: present
+        
+    - name: Install apt-transport-https
+      apt:
+        name: apt-transport-https
+        update_cache: yes
+        
+    - name: Adding elsticsearch repo
+      apt_repository:
+        repo: "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main"
+        state: present
+        filename: elastic-8.x
+    - name: Install Elasticsearch
+      apt:
+        name: elasticsearch
+        update_cache: yes
+    - name: update elasticsearch config file IP to 0.0.0.0
+      lineinfile:
+        destfile: /etc/elasticsearch/elasticsearch.yml
+        regexp: 'network.host'
+        line: 'network.host: 0.0.0.0'
+    - name: update elasticsearch config file http port to 9200
+      lineinfile:
+        destfile: /etc/elasticsearch/elasticsearch.yml
+        regexp: 'http.port'
+        line: 'http.port: 9200'
+    - name: start elasticsearch service
+      service:
+        name: elasticsearch
+        state: started
+        enabled: true
+
+
